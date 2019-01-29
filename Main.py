@@ -2,7 +2,7 @@ import random
 import time
 from matplotlib import pyplot as plt
 import matplotlib.animation as animate
-from SortingAlgorithmsExp import * 
+from SortingAlgorithms import * 
 import sys
 # import music
 
