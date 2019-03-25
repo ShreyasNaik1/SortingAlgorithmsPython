@@ -34,7 +34,7 @@ Check your version of python before continuing forward. This uses 'yield from' w
 
 On your terminal, type in:
 
-`        python main.py           `
+`        python Main.py           `
 
 You will be prompted to enter a number. You are free to choose any number 
 but be wary that the higher the number you, the longer it will take for you 
