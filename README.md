@@ -10,6 +10,9 @@ Seven types of sorting algorithms were first looked at:
 5. Heap
 6. Shell
 7. Bubble
+
+Three more added later: 
+
 8. Radix Sort 
 9. Gnome Sort
 10. Bogo Sort
