@@ -188,4 +188,8 @@ if __name__ == "__main__":
     # anim.save('basic_animation.mp4', writer = 'PillowWriter', fps = 20, codec = 'mpeg4')
     
     print(description)
+<<<<<<< HEAD:Main.py
     plt.show()
+=======
+    plt.show()
+>>>>>>> 95d2acd72c0603141f8388bb87b2b921b0873d46:Main.py

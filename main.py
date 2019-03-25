@@ -1,8 +1,7 @@
-import random
 import time
 from matplotlib import pyplot as plt
 import matplotlib.animation as animate
-from SortingAlgorithmsExp import * 
+from SortingAlgorithms import * 
 import sys
 # import music
 
@@ -21,6 +20,9 @@ if __name__ == "__main__":
                  \n 5. Heap \
                  \n 6. Shell \
                  \n 7. Bubble \
+                 \n 8. Radix \
+                 \n 9. Gnome \
+                 \n 10. Bogo \
                  \n"
 
     # Casting to a local var for use
@@ -107,7 +109,7 @@ if __name__ == "__main__":
                     \n has to be moved to the far left. \
                     \n \n Read more at (right click): https://www.tutorialspoint.com/data_structures_algorithms/shell_sort_algorithm.htm"
 
-    elif alg == "B" or alg == "b" or alg == "7" or alg == "7.":
+    elif alg == "Bu" or alg == "bu" or alg == "7" or alg == "7.":
         sortingMethod = "Bubble Sort"
         singleSort = bubbleSort(unsortedList, numOfSwaps)
         colour = "black"
@@ -117,7 +119,19 @@ if __name__ == "__main__":
                     \n elements is compared and the elements are \
                     \n swapped if they are not in order. \
                     \n \n Read more at (right click): https://www.tutorialspoint.com/data_structures_algorithms/bubble_sort_algorithm.htm"
+    elif alg == "R" or alg == "r" or alg == "8" or alg == "8.":
+        sortingMethod = "Radix Sort"
+        singleSort = radixSort(unsortedList, numOfSwaps)
 
+    elif alg == "G" or alg == "g" or alg == "9" or alg == "9.": 
+        sortingMethod = "Gnome Sort"
+        singleSort = gnomeSort(unsortedList, numOfSwaps) 
+        description = "gnomeSort"
+
+    elif alg == "Bo" or alg == "bo" or alg == "10" or alg == "10.": 
+        sortingMethod = "Bogo Sort"
+        singleSort = bogoSort(unsortedList) 
+        description = "Bogo Sort"
     else:
         print("\n \n Invalid input, please select one of either \
                         \n M/m/1/1., \
