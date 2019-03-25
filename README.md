@@ -1,6 +1,6 @@
-## Welcome! 
+# Welcome! 
 
-# In this application, we will visualize sorting algorithms. 
+### In this application, we will visualize sorting algorithms. 
 
 Seven types of sorting algorithms were first looked at: 
 1. Merge 
@@ -23,14 +23,14 @@ Coming soon:
 12. Binary Insertion Sort 
 
 
-# Prerequisites 
+### Prerequisites 
 
 You need at least python3.3. You can download 
 python3.3 from this [link](https://www.python.org/download/releases/3.3.0/)
 
 Check your version of python before continuing forward. This uses 'yield from' which isn't in python 2
 
-# Instructions 
+### Instructions 
 
 On your terminal, type in:
 
