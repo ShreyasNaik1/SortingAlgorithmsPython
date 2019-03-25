@@ -10,12 +10,13 @@ Seven types of sorting algorithms were first looked at:
 5. Heap
 6. Shell
 7. Bubble
-
-Coming soon: 
 8. Radix Sort 
 9. Gnome Sort
-10. Binary Insertion Sort 
+10. Bogo Sort
+
+Coming soon: 
 11. Cocktail Shaker Sort 
+12. Binary Insertion Sort 
 
 
 # Prerequisites 
@@ -23,7 +24,7 @@ Coming soon:
 You need at least python3.3. You can download 
 python3.3 from this [link](https://www.python.org/download/releases/3.3.0/)
 
-Check your version of python before continuing forward. 
+Check your version of python before continuing forward. This uses 'yield from' which isn't in python 2
 
 # Instructions 
 
