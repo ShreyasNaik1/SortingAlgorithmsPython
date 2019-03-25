@@ -1,13 +1,17 @@
-import random
 import time
-import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
 import matplotlib.animation as animate
-from sortingAlgorithms import mergeSort, quickSort, bubbleSort, insertionSort, selectionSort, heapSort, shellSort
+from SortingAlgorithms import * 
 import sys
+# import music
 
-
+# main function
 if __name__ == "__main__":
+
+    # Users get the option of choosing how many elements should be in the list, 
     N = int(input("Enter the size of the list: "))
+
+    # Users get to choose the particular sorting algorithm they want to view
     selectAlg = " Choose a particular sorting algorithm: \
                  \n 1. Merge \
                  \n 2. Quick \
@@ -16,22 +20,31 @@ if __name__ == "__main__":
                  \n 5. Heap \
                  \n 6. Shell \
                  \n 7. Bubble \
+                 \n 8. Radix \
+                 \n 9. Gnome \
+                 \n 10. Bogo \
                  \n"
 
+    # Casting to a local var for use
     alg = input(selectAlg)
 
-
+    # Creates a list of integers from [1 .. N]
     unsortedList = [x + 1 for x in range(N)]
     random.seed(time.time())
     random.shuffle(unsortedList)
 
+    # make it visually pleasing 
     colour = "blue"
+    # brief description the sorting method, initially should not have a value
     description = "Unselected Sorting Algorithm"
 
+    numOfSwaps = [0]
 
+
+    # Switch case for different sorting algorithms
     if alg == "M" or alg == "m" or alg == "1" or alg == "1.":
         sortingMethod = "Merge Sort"
-        singleSort = mergeSort(unsortedList, 0, N - 1)
+        singleSort = mergeSort(unsortedList, 0, N - 1, numOfSwaps)
         description = "\n \n Merge sort is a sorting technique based \
                     \n on divide and conquer technique. With worst-case \
                     \n time complexity being O(n x log(n)), it is one of \
@@ -42,7 +55,7 @@ if __name__ == "__main__":
 
     elif alg == "Q" or alg == "q" or alg == "2" or alg == "2.":
         sortingMethod = "Quick Sort"
-        singleSort = quickSort(unsortedList, 0, N - 1)
+        singleSort = quickSort(unsortedList, 0, N - 1, numOfSwaps)
         colour = "gold"
         description = "\n \n \n QuickSort is a Divide and Conquer algorithm. \
                     \n It picks an element as pivot and partitions  \
@@ -53,7 +66,7 @@ if __name__ == "__main__":
 
     elif alg == "I" or alg == "i" or alg == "3" or alg == "3.":
         sortingMethod = "Insertion Sort"
-        singleSort = insertionSort(unsortedList)
+        singleSort = insertionSort(unsortedList, numOfSwaps)
         colour = "red"
         description = "\n \n \n Insertion sort is based on the idea that one \
                     \n element from the input elements is consumed  \
@@ -65,7 +78,7 @@ if __name__ == "__main__":
 
     elif alg == "Se" or alg == "se" or alg == "4" or alg == "4.":
         sortingMethod = "Selection Sort"
-        singleSort = selectionSort(unsortedList)
+        singleSort = selectionSort(unsortedList, numOfSwaps)
         colour = "green"
         description = "\n \n \n Selection sort is a simple sorting algorithm. \
                     \n This sorting algorithm is an in-place \
@@ -76,7 +89,7 @@ if __name__ == "__main__":
 
     elif alg == "H" or alg == "h" or alg == "5" or alg == "5.":
         sortingMethod = "Heap Sort"
-        singleSort = heapSort(unsortedList)
+        singleSort = heapSort(unsortedList, numOfSwaps)
         colour = "silver"
         description = "\n \n \n Heaps can be used in sorting an array. \
                     \n In max-heaps, maximum element will always \
@@ -86,7 +99,7 @@ if __name__ == "__main__":
 
     elif alg == "Sh" or alg == "sh" or alg == "6" or alg == "6.":
         sortingMethod = "Shell Sort"
-        singleSort = shellSort(unsortedList)
+        singleSort = shellSort(unsortedList, numOfSwaps)
         colour = "darkmagenta"
         description = "\n \n \n Shell sort is a highly efficient sorting \
                     \n algorithm and is based on insertion sort \
@@ -96,9 +109,9 @@ if __name__ == "__main__":
                     \n has to be moved to the far left. \
                     \n \n Read more at (right click): https://www.tutorialspoint.com/data_structures_algorithms/shell_sort_algorithm.htm"
 
-    elif alg == "B" or alg == "b" or alg == "7" or alg == "7.":
+    elif alg == "Bu" or alg == "bu" or alg == "7" or alg == "7.":
         sortingMethod = "Bubble Sort"
-        singleSort = bubbleSort(unsortedList)
+        singleSort = bubbleSort(unsortedList, numOfSwaps)
         colour = "black"
         description = "\n \n \n Bubble sort is a simple sorting algorithm. \
                     \n This sorting algorithm is comparison-based \
@@ -106,7 +119,19 @@ if __name__ == "__main__":
                     \n elements is compared and the elements are \
                     \n swapped if they are not in order. \
                     \n \n Read more at (right click): https://www.tutorialspoint.com/data_structures_algorithms/bubble_sort_algorithm.htm"
+    elif alg == "R" or alg == "r" or alg == "8" or alg == "8.":
+        sortingMethod = "Radix Sort"
+        singleSort = radixSort(unsortedList, numOfSwaps)
 
+    elif alg == "G" or alg == "g" or alg == "9" or alg == "9.": 
+        sortingMethod = "Gnome Sort"
+        singleSort = gnomeSort(unsortedList, numOfSwaps) 
+        description = "gnomeSort"
+
+    elif alg == "Bo" or alg == "bo" or alg == "10" or alg == "10.": 
+        sortingMethod = "Bogo Sort"
+        singleSort = bogoSort(unsortedList) 
+        description = "Bogo Sort"
     else:
         print("\n \n Invalid input, please select one of either \
                         \n M/m/1/1., \
@@ -121,18 +146,25 @@ if __name__ == "__main__":
   
 
 
-
+    # initialize an empty graph
     figure, axis = plt.subplots()
     cols = axis.bar(range(len(unsortedList)), unsortedList, align = "edge", color = colour)
+    # The selected Sorting Method is the title 
     axis.set_title(sortingMethod)
 
-    ylim = 1.15 * N
+    # Limits to the axis present 
+    ylim = 1.5 * N
     axis.set_xlim(0, N)
     axis.set_ylim(0, ylim)
 
 
-    numOfSwitches = axis.text(0.02, 0.95, "", transform = axis.transAxes)
-
+    # Switches represents the number of swaps + comparisons 
+    # which basically the value of c when we talk about the
+    # O(n) taking place 
+    numOfIterations = axis.text(0.02, 0.85, "", transform = axis.transAxes)
+    numOfItems = axis.text(0.02, 0.95, "", transform = axis.transAxes)
+    numOfItems.set_text("Number of items: {}".format(N))
+    totalSwaps = axis.text(0.02, 0.90, "", transform = axis.transAxes)
 
     iters = [0]
     def addToFigure(unsortedList, singleBar, iters):
@@ -141,7 +173,8 @@ if __name__ == "__main__":
             col.set_height(val)
 
         iters[0] += 1
-        numOfSwitches.set_text("Number of switches: {}".format(iters[0]))
+        totalSwaps.set_text("Number of swaps: {}".format(numOfSwaps[0]))
+        numOfIterations.set_text("Number of iterations: {}".format(iters[0]))
 
         
 
@@ -150,7 +183,9 @@ if __name__ == "__main__":
                                          frames = singleSort, 
                                          interval = 1, 
                                          repeat = False)
-
+    
+    
+    # anim.save('basic_animation.mp4', writer = 'PillowWriter', fps = 20, codec = 'mpeg4')
+    
     print(description)
-
     plt.show()
