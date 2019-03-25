@@ -1,6 +1,6 @@
 ## Welcome! 
 
-#In this application, we will visualize sorting algorithms. 
+# In this application, we will visualize sorting algorithms. 
 
 Seven types of sorting algorithms were first looked at: 
 1. Merge 
