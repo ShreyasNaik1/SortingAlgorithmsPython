@@ -15,6 +15,7 @@ Seven types of sorting algorithms were first looked at:
 10. Bogo Sort
 
 Coming soon: 
+
 11. Cocktail Shaker Sort 
 12. Binary Insertion Sort 
 
